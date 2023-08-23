@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRUD</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="w-75 mx-auto py-5">
+      <h1>Product Management System</h1>
+      <div class="form-group mb-3">
+        <label for="productName" class="form-label mb-2">Product Name</label>
+        <input oninput="validateProductName()" type="text" class="form-control" id="productName"
+          placeholder="Enter Name">
+        <p class="text-danger d-none" id="wrongName">Invalid Name (starts with capital charactor)</p>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="productPrice" class="form-label mb-2">Product Price</label>
+        <input oninput="validateProductPrice()" type="number" class="form-control" id="productPrice"
+          placeholder="Enter Price">
+        <p class="text-danger d-none" id="wrongPrice">Invalid Price (Price between (1000-10000))</p>
+
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="productModel" class="form-label mb-2">Product Model</label>
+        <!-- <input type="text" class="form-control" id="productModel" placeholder="Enter Model"> -->
+        <select onchange="validateProductModel()" class="form-select text-muted py-2"
+          aria-label="Default select example" class="form-control" id="productModel">
+          <!-- <option selected disabled="true">Choose Model</option> -->
+          <!-- <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option> -->
+        </select>
+        <p class="text-danger d-none" id="wrongModel">select model</p>
+
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="productDesc" class="form-label mb-2">Product Describtion</label>
+        <textarea rows="3" oninput="validateProductDesc()" name="productDesc" class="form-control" id="productDesc"
+          placeholder="Enter Describtion"></textarea>
+        <p class="text-danger d-none" id="wrongDesc">please enter min 250 character or more</p>
+
+      </div>
+
+
+      <button class="btn btn-primary " id="addProdBtn" onclick="addProduct()">Add Product</button>
+      <button class="btn btn-warning d-none" id="updateProdBtn" onclick="updateProduct()">Update Product</button>
+
+    </div>
+
+    <div class="w-75 mx-auto py-5">
+      <h4>Search....</h4>
+      <input type="text" oninput="searchByName(this.value)" class="form-control">
+    </div>
+    <div class="table-responsive">
+    <table class="table text-white text-center w-75 mx-auto align-middle">
+      <thead>
+        <tr>
+          <th> index</th>
+          <th> productName</th>
+          <th> productPrice</th>
+          <th> productModel</th>
+          <th> productDesc</th>
+          <th> Update</th>
+          <th> Delete</th>
+        </tr>
+
+
+
+      </thead>
+      <tbody id="tBody">
+
+      </tbody>
+    </table>
+  </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
